@@ -54,7 +54,7 @@ namespace Core.DataAccess.Concrete
             using (TDataBase context = new TDataBase())
             {
                 var addEntity = context.Entry(entity);
-                addEntity.State = EntityState.Added;
+                addEntity.State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

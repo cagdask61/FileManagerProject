@@ -12,11 +12,6 @@ namespace Core.Utilities.FileAccess
     {
         private string BaseDirectoryPath { get => Environment.CurrentDirectory + "\\wwwroot"; }
 
-        public FileUpload(string directoryPath)
-        {
-
-        }
-
         public IDataResult<UploadedFile> Upload(IFormFile file, string directoryPath)
         {
             CheckDirectoryExists(directoryPath);
@@ -27,7 +22,7 @@ namespace Core.Utilities.FileAccess
             }
 
             string fileType = GetFileType(file.FileName);
-            string fileName = GetNewFileName();
+            string fileName = GetNewFileName() + fileType;
             UploadedFile uploadedFile = new UploadedFile()
             {
                 FileName = fileName,
@@ -36,7 +31,7 @@ namespace Core.Utilities.FileAccess
                 FullDirectoryPath = BaseDirectoryPath + directoryPath + fileName
             };
             UploadFile(uploadedFile.FullDirectoryPath, file);
-            return new SuccessDataResult<UploadedFile>(uploadedFile);
+            return new SuccessDataResult<UploadedFile>(uploadedFile,Messages.SuccessFileUpload);
         }
 
         private string GetNewFileName()

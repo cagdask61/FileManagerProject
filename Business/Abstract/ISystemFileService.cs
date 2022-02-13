@@ -8,11 +8,11 @@ namespace Business.Abstract
 {
     public interface ISystemFileService
     {
-        IResult Add(SystemFile systemFile);
+        IResult Upload(UserForFile userForFile);
         IResult Delete(SystemFile systemFile);
         IResult Update(SystemFile systemFile);
 
         IListDataResult<SystemFile> GetAll();
-        ISingleDataResult<SystemFile> GetById(int systemFileId);
+        ISingleDataResult<SystemFile> GetBySystemFileId(int systemFileId);
     }
 }
