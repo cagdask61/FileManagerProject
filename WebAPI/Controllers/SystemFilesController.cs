@@ -52,6 +52,18 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("create-folder")]
+        public IActionResult CreateFolder(SystemFolder systemFolder)
+        {
+            var result = _systemFileService.CreateFolder(systemFolder);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+                
+        }
+
         [HttpGet("get-all")]
         public IActionResult GetAll()
         {

@@ -14,5 +14,7 @@ namespace Business.Abstract
 
         IListDataResult<SystemFile> GetAll();
         ISingleDataResult<SystemFile> GetBySystemFileId(int systemFileId);
+
+        IResult CreateFolder(SystemFolder systemFolder);
     }
 }

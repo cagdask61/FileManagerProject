@@ -22,10 +22,12 @@ namespace Business.Concrete
             _fileUpload = fileUpload;
         }
 
+
+
         public IResult Upload(UserForFile userForFile)
         {
-
-            var fileUploadResult = _fileUpload.Upload(userForFile.File, "\\files\\");
+            string directory = "\\files\\" + userForFile.UserId.ToString() + "\\" + userForFile.Directory + "\\";
+            var fileUploadResult = _fileUpload.Upload(userForFile.File, directory);
             var result = Rules.Run(fileUploadResult);
             if (result != null)
             {
@@ -69,6 +71,10 @@ namespace Business.Concrete
             return new SuccessSingleDataResult<SystemFile>(_systemFileDal.Get((systemFile) => systemFile.Id == 1));
         }
 
-      
+        public IResult CreateFolder(SystemFolder systemFolder)
+        {
+            _fileUpload.CreateDirectory(systemFolder.UserId.ToString() + "\\" + systemFolder.Name);
+            return new SuccessResult("Klasör başarıyla oluşturuldu");
+        }
     }
 }

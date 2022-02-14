@@ -10,5 +10,7 @@ namespace Core.Utilities.FileAccess
     public interface IFileUpload
     {
         IDataResult<UploadedFile> Upload(IFormFile file,string directoryPath);
+
+        void CreateDirectory(string directory);
     }
 }

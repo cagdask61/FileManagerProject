@@ -72,5 +72,9 @@ namespace Core.Utilities.FileAccess
             }
         }
 
+        public void CreateDirectory(string directory)
+        {
+            Directory.CreateDirectory(BaseDirectoryPath + "\\" + "files" + "\\" + directory);
+        }
     }
 }

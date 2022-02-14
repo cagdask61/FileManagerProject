@@ -14,6 +14,8 @@ namespace Entities.Concrete
 
         public bool IsActive { get; set; }
 
+        public string Directory { get; set; }
+
         public IFormFile File { get; set; }
     }
 }
